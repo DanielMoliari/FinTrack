@@ -319,6 +319,15 @@ function doPost(e) {
         return jsonResponse(updateMeta(data));
       case "toggle_fixed":
         return jsonResponse(toggleFixed(data));
+      case "get_all":
+        return jsonResponse({
+          transactions: getTransactions(data && data.mes ? parseInt(data.mes) : null, data && data.ano ? parseInt(data.ano) : null, data && data.carteira || null),
+          fixed:        sheetToObjects(getSheet(SHEET_NAMES.FIXED)),
+          wallets:      sheetToObjects(getSheet(SHEET_NAMES.WALLETS)),
+          rendimentos:  sheetToObjects(getSheet(SHEET_NAMES.RENDIMENTOS)),
+          metas:        sheetToObjects(getSheet(SHEET_NAMES.METAS)),
+          crypto:       sheetToObjects(getSheet(SHEET_NAMES.CRYPTO)),
+        });
       case "migrate":
         return jsonResponse(migrateOldData());
       case "backup_drive":

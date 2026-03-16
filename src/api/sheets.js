@@ -16,37 +16,12 @@ const getConfig = () => {
 };
 
 /**
- * GET all data, optionally filtered.
- * Sem custom headers → sem preflight CORS.
- * Token via query param (Code.gs lê de e.parameter.token).
+ * Busca todos os dados via POST (action: get_all).
+ * POST com Content-Type: text/plain não sofre redirect do Google
+ * e não dispara preflight CORS — funciona em produção sem proxy.
  */
 export const fetchData = async (params = {}) => {
-  const { scriptUrl, token } = getConfig();
-  const searchParams = new URLSearchParams({ token });
-  Object.entries(params).forEach(([k, v]) => {
-    if (v !== undefined && v !== null) searchParams.set(k, v);
-  });
-  const fetchUrl = `${scriptUrl}?${searchParams.toString()}`;
-
-  console.log(
-    "[sheets.fetchData] fetchUrl=",
-    fetchUrl,
-    "params=",
-    params,
-    "tokenPresent=",
-    Boolean(token),
-  );
-  const res = await fetch(fetchUrl, { method: "GET" });
-  if (!res.ok) {
-    const text = await res.text().catch(() => "");
-    console.error("[sheets.fetchData] non-ok response", res.status, text);
-    throw new Error(`API error: ${res.status} ${text}`);
-  }
-  const json = await res.json().catch((err) => {
-    console.error("[sheets.fetchData] invalid json", err);
-    throw err;
-  });
-  return json;
+  return postAction("get_all", Object.keys(params).length ? params : null);
 };
 
 /**
