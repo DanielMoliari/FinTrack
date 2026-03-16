@@ -31,7 +31,7 @@ export const fetchData = async (params = {}) => {
  */
 export const postAction = async (action, data) => {
   const { scriptUrl, token } = getConfig();
-  const fetchUrl = `${scriptUrl}?token=${token}`;
+  const fetchUrl = `${scriptUrl}${scriptUrl.includes('?') ? '&' : '?'}token=${token}`;
 
   console.log(
     "[sheets.postAction] action=",
