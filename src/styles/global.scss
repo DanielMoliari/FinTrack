@@ -1,10 +1,16 @@
-@use 'variables';
-@use 'reset';
+@use "variables";
+@use "reset";
 
-html, body {
+html,
+body {
   background-color: var(--color-bg-deep);
   color: var(--color-text-primary);
-  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
   font-size: var(--font-body);
   line-height: 1.4;
   -webkit-font-smoothing: antialiased;
@@ -16,7 +22,7 @@ html, body {
   flex-direction: column;
   height: 100dvh;
   max-width: 430px;
-  margin: 0 auto;
+  margin: 32px auto 0;
   position: relative;
   overflow: hidden;
 }
@@ -62,16 +68,30 @@ html, body {
 }
 
 @keyframes skeleton-shimmer {
-  0%   { background-position: 200% 0; }
-  100% { background-position: -200% 0; }
+  0% {
+    background-position: 200% 0;
+  }
+  100% {
+    background-position: -200% 0;
+  }
 }
 
 // Utility classes
-.text-positive { color: var(--color-positive); }
-.text-negative  { color: var(--color-negative); }
-.text-warning   { color: var(--color-warning); }
-.text-muted     { color: var(--color-text-muted); }
-.text-secondary { color: var(--color-text-secondary); }
+.text-positive {
+  color: var(--color-positive);
+}
+.text-negative {
+  color: var(--color-negative);
+}
+.text-warning {
+  color: var(--color-warning);
+}
+.text-muted {
+  color: var(--color-text-muted);
+}
+.text-secondary {
+  color: var(--color-text-secondary);
+}
 
 .mono {
   font-variant-numeric: tabular-nums;
@@ -80,8 +100,14 @@ html, body {
 
 // Fade in animation
 @keyframes fadeIn {
-  from { opacity: 0; transform: translateY(8px); }
-  to   { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .fade-in {
@@ -90,6 +116,10 @@ html, body {
 
 // Slide up for modals
 @keyframes slideUp {
-  from { transform: translateY(100%); }
-  to   { transform: translateY(0); }
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
 }

@@ -45,7 +45,9 @@
     color: var(--color-text-primary);
     letter-spacing: -1px;
     width: 100%;
-    &::placeholder { color: var(--color-text-muted); }
+    &::placeholder {
+      color: var(--color-text-muted);
+    }
   }
 }
 
@@ -79,7 +81,9 @@
   border: 0.5px solid var(--color-border);
   color: var(--color-text-secondary);
   transition: all 0.15s;
-  &:active { opacity: 0.7; }
+  &:active {
+    opacity: 0.7;
+  }
 }
 
 .catActive {
@@ -100,7 +104,9 @@
   color-scheme: dark;
   cursor: pointer;
 
-  option { background: #131320; }
+  option {
+    background: #131320;
+  }
 }
 
 .input {
@@ -113,8 +119,12 @@
   color: var(--color-text-primary);
   margin-bottom: 16px;
 
-  &::placeholder { color: var(--color-text-muted); }
-  &:focus { border-color: var(--color-border-hover); }
+  &::placeholder {
+    color: var(--color-text-muted);
+  }
+  &:focus {
+    border-color: var(--color-border-hover);
+  }
 }
 
 .toggle2 {
@@ -137,7 +147,7 @@
   transition: background 0.2s;
 
   &::after {
-    content: '';
+    content: "";
     position: absolute;
     width: 16px;
     height: 16px;
@@ -145,7 +155,9 @@
     background: var(--color-text-muted);
     top: 2.5px;
     left: 3px;
-    transition: transform 0.2s, background 0.2s;
+    transition:
+      transform 0.2s,
+      background 0.2s;
   }
 }
 
@@ -170,7 +182,7 @@
   bottom: 0;
   background: var(--color-bg-surface);
   padding: 8px 16px calc(env(safe-area-inset-bottom, 0px) + 8px);
-  margin: 0 -16px -24px;
+  margin: 24px -16px;
 }
 
 .saveBtn {
@@ -183,8 +195,12 @@
   font-weight: 600;
   transition: opacity 0.15s;
 
-  &:disabled { opacity: 0.5; }
-  &:not(:disabled):active { opacity: 0.85; }
+  &:disabled {
+    opacity: 0.5;
+  }
+  &:not(:disabled):active {
+    opacity: 0.85;
+  }
 }
 
 .row {
@@ -192,7 +208,8 @@
   gap: 8px;
   align-items: center;
 
-  .select, .input {
+  .select,
+  .input {
     flex: 1;
     margin-bottom: 0;
   }
@@ -215,8 +232,16 @@
   }
 }
 
-.betGain  { background: var(--color-positive) !important; color: #fff !important; border-color: var(--color-positive) !important; }
-.betLoss  { background: var(--color-negative) !important; color: #fff !important; border-color: var(--color-negative) !important; }
+.betGain {
+  background: var(--color-positive) !important;
+  color: #fff !important;
+  border-color: var(--color-positive) !important;
+}
+.betLoss {
+  background: var(--color-negative) !important;
+  color: #fff !important;
+  border-color: var(--color-negative) !important;
+}
 
 .balanceDisplay {
   text-align: center;
