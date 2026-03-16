@@ -1,0 +1,231 @@
+.page { padding-bottom: 16px; }
+
+.total {
+  padding: 0 16px 16px;
+}
+
+.totalLabel {
+  font-size: 11px;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-weight: 500;
+  margin-bottom: 4px;
+}
+
+.totalValue {
+  font-size: var(--font-balance);
+  font-weight: 500;
+  letter-spacing: -1.5px;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-primary);
+}
+
+.chartWrap {
+  padding: 0 16px 16px;
+}
+
+.chartEmpty {
+  margin: 0 16px 16px;
+  background: #0f0f1a;
+  border: 0.5px solid #1e1e30;
+  border-radius: 12px;
+  padding: 20px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  text-align: center;
+
+  p {
+    font-size: 12px;
+    color: #888890;
+    line-height: 1.5;
+  }
+
+  strong { color: #e0e0e8; font-weight: 500; }
+}
+
+.section {
+  padding: 0 16px 16px;
+}
+
+.sectionTitle {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+}
+
+.walletList {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.walletCard {
+  display: flex;
+  align-items: stretch;
+  gap: 12px;
+  padding: 10px 12px !important;
+}
+
+.walletBar {
+  width: 3px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  min-height: 36px;
+}
+
+.walletInfo {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.walletName {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.walletType {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.walletBalance {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.3px;
+}
+
+.walletRend {
+  font-size: 11px;
+  margin-top: 2px;
+}
+
+.cryptoRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 0.5px solid var(--color-border);
+
+  &:last-child { border-bottom: none; }
+}
+
+.cryptoName {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.cryptoSub {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  margin-top: 2px;
+}
+
+.cryptoValue {
+  font-size: 13px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-primary);
+}
+
+.cryptoChange {
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 2px;
+  text-align: right;
+}
+
+.projRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 0;
+  border-bottom: 0.5px solid var(--color-border);
+
+  &:last-child { border-bottom: none; }
+}
+
+.projDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.projName {
+  flex: 1;
+  font-size: 13px;
+  color: var(--color-text-primary);
+}
+
+.projValue {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+/* ── C6Bank expandable card ── */
+.walletCardC6 {
+  padding: 0 !important;
+  flex-direction: column !important;
+  gap: 0 !important;
+  align-items: stretch !important;
+}
+
+.walletCardExpanded {
+  border-color: #1d9e75 !important;
+}
+
+.c6Header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 12px;
+  width: 100%;
+  text-align: left;
+}
+
+.c6Expanded {
+  border-top: 0.5px solid #1e1e30;
+  padding: 0 12px 4px 27px; /* 27px = bar(3px) + gap(12px) + left-pad(12px) */
+}
+
+.c6Row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 0.5px solid #1a1a2a;
+  &:last-child { border-bottom: none; }
+}
+
+.c6Label {
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+}
+
+.c6Hint {
+  font-size: 10px;
+  color: #3a3a52;
+  margin-top: 2px;
+}
+
+.c6Value {
+  font-size: 13px;
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  color: var(--color-text-primary);
+  letter-spacing: -0.3px;
+}

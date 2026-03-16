@@ -1,0 +1,39 @@
+.nav {
+  display: flex;
+  background: #0a0a14;
+  border-top: 0.5px solid #131320;
+  padding: 9px 0 calc(15px + env(safe-area-inset-bottom, 0px));
+  flex-shrink: 0;
+}
+
+.item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.icon {
+  color: #2a2a45;
+  transition: color 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.label {
+  font-size: 8.5px;
+  font-weight: 500;
+  color: #2a2a45;
+  transition: color 0.15s ease;
+  letter-spacing: 0.2px;
+}
+
+.active {
+  .icon, .label {
+    color: #ffffff;
+  }
+}

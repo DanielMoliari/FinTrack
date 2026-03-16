@@ -1,0 +1,95 @@
+@use 'variables';
+@use 'reset';
+
+html, body {
+  background-color: var(--color-bg-deep);
+  color: var(--color-text-primary);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: var(--font-body);
+  line-height: 1.4;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;
+  max-width: 430px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.page-content {
+  flex: 1;
+  overflow-y: auto;
+  overflow-x: hidden;
+  padding-bottom: calc(var(--bottom-nav-height) + var(--safe-bottom) + 16px);
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.page-header {
+  padding: 20px 16px 12px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: var(--color-bg-deep);
+
+  h1 {
+    font-size: var(--font-title);
+    font-weight: 500;
+    color: var(--color-text-primary);
+  }
+}
+
+// Loading skeleton
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--color-bg-elevated) 25%,
+    var(--color-border) 50%,
+    var(--color-bg-elevated) 75%
+  );
+  background-size: 200% 100%;
+  animation: skeleton-shimmer 1.5s infinite;
+  border-radius: 6px;
+}
+
+@keyframes skeleton-shimmer {
+  0%   { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+// Utility classes
+.text-positive { color: var(--color-positive); }
+.text-negative  { color: var(--color-negative); }
+.text-warning   { color: var(--color-warning); }
+.text-muted     { color: var(--color-text-muted); }
+.text-secondary { color: var(--color-text-secondary); }
+
+.mono {
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.5px;
+}
+
+// Fade in animation
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.25s ease forwards;
+}
+
+// Slide up for modals
+@keyframes slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}

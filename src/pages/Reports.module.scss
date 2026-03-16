@@ -1,0 +1,361 @@
+.page { padding-bottom: 16px; }
+
+.pillsRow {
+  display: flex;
+  gap: 6px;
+  padding: 0 16px 16px;
+  overflow-x: auto;
+  scrollbar-width: none;
+  &::-webkit-scrollbar { display: none; }
+}
+
+.sections {
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.cardTitle {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+}
+
+.chartMeta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 8px;
+  font-size: 11px;
+  color: var(--color-text-secondary);
+}
+
+.chartMeta2 {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  margin-top: 6px;
+}
+
+.bigValue {
+  font-size: 28px;
+  font-weight: 500;
+  letter-spacing: -1px;
+  font-variant-numeric: tabular-nums;
+  margin-bottom: 8px;
+}
+
+.progressBar {
+  height: 4px;
+  background: var(--color-bg-elevated);
+  border-radius: 2px;
+  overflow: hidden;
+  margin-bottom: 6px;
+}
+
+.progressFill {
+  height: 100%;
+  border-radius: 2px;
+  transition: width 0.6s ease;
+}
+
+.scoreLabel {
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.topCats {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.topCatRow {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.topCatName {
+  font-size: 11px;
+  color: var(--color-text-secondary);
+  width: 80px;
+  flex-shrink: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.topCatBar {
+  flex: 1;
+  height: 4px;
+  background: var(--color-bg-elevated);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.topCatFill {
+  height: 100%;
+  border-radius: 2px;
+  min-width: 4px;
+}
+
+.topCatValue {
+  font-size: 11px;
+  color: var(--color-text-primary);
+  font-weight: 500;
+  font-variant-numeric: tabular-nums;
+  width: 72px;
+  text-align: right;
+  flex-shrink: 0;
+}
+
+/* ── Header ── */
+.headerRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.gearBtn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: #131320;
+  border: 0.5px solid #1e1e30;
+  color: #888890;
+  flex-shrink: 0;
+  transition: color 0.15s;
+  &:hover { color: #e0e0e8; }
+}
+
+/* ── Custom date pickers ── */
+.customDates {
+  display: flex;
+  gap: 10px;
+  padding: 0 16px 12px;
+}
+
+.dateField {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+}
+
+.dateLabel {
+  font-size: 10px;
+  color: #888890;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.dateInput {
+  background: #131320;
+  border: 0.5px solid #1e1e30;
+  border-radius: 8px;
+  padding: 6px 10px;
+  font-size: 12px;
+  color: #e0e0e8;
+  width: 100%;
+  &::-webkit-calendar-picker-indicator { filter: invert(0.6); }
+}
+
+/* ── Card helpers ── */
+.cardSub {
+  font-size: 10px;
+  font-weight: 400;
+  color: #3a3a52;
+  margin-left: 6px;
+}
+
+.cardTitleRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 12px;
+}
+
+.catSelect {
+  background: #131320;
+  border: 0.5px solid #1e1e30;
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 11px;
+  color: #e0e0e8;
+  max-width: 140px;
+}
+
+/* ── Month pickers ── */
+.monthPickers {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.monthPickerItem {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex: 1;
+}
+
+.monthDot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.monthInput {
+  background: #131320;
+  border: 0.5px solid #1e1e30;
+  border-radius: 8px;
+  padding: 5px 8px;
+  font-size: 11px;
+  color: #e0e0e8;
+  flex: 1;
+  min-width: 0;
+  &::-webkit-calendar-picker-indicator { filter: invert(0.6); }
+}
+
+/* ── Daily stats grid ── */
+.statGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+}
+
+.statCell {
+  background: #0f0f1a;
+  border: 0.5px solid #1e1e30;
+  border-radius: 10px;
+  padding: 10px 8px;
+  text-align: center;
+}
+
+.statValue {
+  font-size: 16px;
+  font-weight: 600;
+  color: #e0e0e8;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.5px;
+  margin-bottom: 4px;
+}
+
+.statLabel {
+  font-size: 10px;
+  color: #888890;
+}
+
+.statSub {
+  font-size: 10px;
+  color: #3a3a52;
+  margin-top: 2px;
+}
+
+/* ── Empty state ── */
+.empty {
+  font-size: 12px;
+  color: #3a3a52;
+  text-align: center;
+  padding: 16px 0;
+}
+
+/* ── Preferences bottom sheet ── */
+.prefOverlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  display: flex;
+  align-items: flex-end;
+}
+
+.prefSheet {
+  width: 100%;
+  background: #0f0f1a;
+  border-top: 0.5px solid #1e1e30;
+  border-radius: 16px 16px 0 0;
+  padding: 12px 20px 32px;
+  max-height: 80vh;
+  overflow-y: auto;
+}
+
+.prefHandle {
+  width: 36px;
+  height: 4px;
+  background: #1e1e30;
+  border-radius: 2px;
+  margin: 0 auto 16px;
+}
+
+.prefHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.prefTitle {
+  font-size: 14px;
+  font-weight: 600;
+  color: #e0e0e8;
+}
+
+.prefClose {
+  font-size: 16px;
+  color: #3a3a52;
+  padding: 4px;
+  &:hover { color: #888890; }
+}
+
+.prefRow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 0;
+  border-bottom: 0.5px solid #1e1e30;
+  &:last-child { border-bottom: none; }
+}
+
+.prefLabel {
+  font-size: 13px;
+  color: #e0e0e8;
+}
+
+.prefSwitch {
+  width: 40px;
+  height: 22px;
+  border-radius: 11px;
+  background: #1e1e30;
+  position: relative;
+  transition: background 0.2s;
+  flex-shrink: 0;
+  cursor: pointer;
+  border: none;
+
+  &::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background: #888890;
+    top: 3px;
+    left: 3px;
+    transition: transform 0.2s, background 0.2s;
+  }
+}
+
+.prefSwitchOn {
+  background: #1d9e75;
+  &::after {
+    transform: translateX(18px);
+    background: #fff;
+  }
+}

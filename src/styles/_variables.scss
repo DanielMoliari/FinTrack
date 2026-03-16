@@ -1,0 +1,66 @@
+// ============================================================
+// FinTrack — Design Tokens
+// ============================================================
+
+:root {
+  // Backgrounds
+  --color-bg-deep:      #08080f;
+  --color-bg-surface:   #0f0f1a;
+  --color-bg-elevated:  #131320;
+  --color-border:       #1e1e30;
+  --color-border-hover: #2a2a3e;
+
+  // Semantic colors
+  --color-accent-blue:  #378add;
+  --color-positive:     #1d9e75;
+  --color-negative:     #d85a30;
+  --color-warning:      #ef9f27;
+  --color-purple:       #7f77dd;
+
+  // Text
+  --color-text-primary:   #e0e0e8;
+  --color-text-secondary: #888890;
+  --color-text-muted:     #3a3a52;
+  --color-text-disabled:  #2a2a45;
+
+  // Typography scale
+  --font-balance:   clamp(32px, 8vw, 38px);
+  --font-title:     15px;
+  --font-section:   13px;
+  --font-body:      13px;
+  --font-meta:      11px;
+
+  // Spacing
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 24px;
+
+  // Radii
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-full: 99px;
+
+  // Bottom nav height
+  --bottom-nav-height: 64px;
+  --safe-bottom: env(safe-area-inset-bottom, 0px);
+}
+
+// SCSS variables for use in mixins
+$bg-deep:      #08080f;
+$bg-surface:   #0f0f1a;
+$bg-elevated:  #131320;
+$border:       #1e1e30;
+$border-hover: #2a2a3e;
+
+$accent-blue: #378add;
+$positive:    #1d9e75;
+$negative:    #d85a30;
+$warning:     #ef9f27;
+$purple:      #7f77dd;
+
+$text-primary:   #e0e0e8;
+$text-secondary: #888890;
+$text-muted:     #3a3a52;
+$text-disabled:  #2a2a45;
