@@ -68,10 +68,9 @@ const Profile = () => {
   }
 
   const saveEdit = () => {
-    if (editing) {
-      updateSettings({ [editing]: tempVal })
-      setEditing(null)
-    }
+    if (!editing) return
+    updateSettings({ [editing]: tempVal })
+    setEditing(null)
   }
 
   const initial = (settings.userName || 'U')[0].toUpperCase()
