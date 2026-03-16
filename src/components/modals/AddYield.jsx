@@ -25,16 +25,16 @@ const AddYield = ({ open, onClose }) => {
 
   const handleSave = async () => {
     if (!carteira) { setError('Selecione uma carteira'); return }
-    if (!valorRendido || parseFloat(valorRendido) <= 0) { setError('Informe o valor rendido'); return }
+    if (!valorRendido || parseFloat(valorRendido.replace(',', '.')) <= 0) { setError('Informe o valor rendido'); return }
     setSaving(true)
     try {
       await addRendimento({
         carteira_id: carteira,
         mes,
         ano,
-        valor_rendido: parseFloat(valorRendido),
-        saldo_final: parseFloat(saldoFinal) || 0,
-        cdi_vigente: parseFloat(cdi) || 0
+        valor_rendido: parseFloat(valorRendido.replace(',', '.')),
+        saldo_final: parseFloat(saldoFinal.replace(',', '.')) || 0,
+        cdi_vigente: parseFloat(cdi.replace(',', '.')) || 0
       })
       await loadAll()
       handleClose()
@@ -66,14 +66,14 @@ const AddYield = ({ open, onClose }) => {
       <p className={styles.fieldLabel}>Valor rendido</p>
       <div className={styles.valueInput} style={{ marginBottom: 16 }}>
         <span className={styles.currency}>R$</span>
-        <input type="number" placeholder="0,00" value={valorRendido} onChange={e => setValorRendido(e.target.value)} inputMode="decimal" />
+        <input type="text" inputMode="decimal" placeholder="0,00" value={valorRendido} onChange={e => setValorRendido(e.target.value.replace(/[^0-9,]/g, ''))} />
       </div>
 
       <p className={styles.fieldLabel}>Saldo final (opcional)</p>
-      <input className={styles.input} type="number" placeholder="0,00" value={saldoFinal} onChange={e => setSaldoFinal(e.target.value)} inputMode="decimal" />
+      <input className={styles.input} type="text" inputMode="decimal" placeholder="0,00" value={saldoFinal} onChange={e => setSaldoFinal(e.target.value.replace(/[^0-9,]/g, ''))} />
 
       <p className={styles.fieldLabel}>CDI vigente % a.a. (opcional)</p>
-      <input className={styles.input} type="number" placeholder="10.5" value={cdi} onChange={e => setCdi(e.target.value)} inputMode="decimal" />
+      <input className={styles.input} type="text" inputMode="decimal" placeholder="10,5" value={cdi} onChange={e => setCdi(e.target.value.replace(/[^0-9,]/g, ''))} />
 
       {error && <p className={styles.error}>{error}</p>}
 

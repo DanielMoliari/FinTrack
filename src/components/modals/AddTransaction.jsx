@@ -47,7 +47,7 @@ const AddTransaction = ({ open, onClose }) => {
   };
 
   const handleSave = async () => {
-    if (!valor || parseFloat(valor) <= 0) {
+    if (!valor || parseFloat(valor.replace(',', '.')) <= 0) {
       setError("Informe um valor válido");
       return;
     }
@@ -58,7 +58,7 @@ const AddTransaction = ({ open, onClose }) => {
     setSaving(true);
     const payload = {
       id: generateId("txn"),
-      valor: parseFloat(valor),
+      valor: parseFloat(valor.replace(',', '.')),
       tipo_fluxo: tipo,
       categoria,
       subcategoria,
@@ -105,11 +105,11 @@ const AddTransaction = ({ open, onClose }) => {
       <div className={styles.valueInput}>
         <span className={styles.currency}>R$</span>
         <input
-          type="number"
+          type="text"
+          inputMode="decimal"
           placeholder="0,00"
           value={valor}
-          onChange={(e) => setValor(e.target.value)}
-          inputMode="decimal"
+          onChange={(e) => setValor(e.target.value.replace(/[^0-9,]/g, ''))}
           autoFocus
         />
       </div>

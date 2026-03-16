@@ -26,12 +26,12 @@ const AddBet = ({ open, onClose }) => {
   const handleClose = () => { setTipo('ganho'); setValor(''); setError(''); onClose() }
 
   const handleSave = async () => {
-    if (!valor || parseFloat(valor) <= 0) { setError('Informe um valor válido'); return }
+    if (!valor || parseFloat(valor.replace(',', '.')) <= 0) { setError('Informe um valor válido'); return }
     setSaving(true)
     try {
       await addTransaction({
         id: generateId('bet'),
-        valor: parseFloat(valor),
+        valor: parseFloat(valor.replace(',', '.')),
         tipo_fluxo: tipo === 'ganho' ? 'entrada' : 'saida',
         categoria: 'Apostas e jogos',
         subcategoria: tipo === 'ganho' ? 'Ganho' : 'Perda',
@@ -48,7 +48,7 @@ const AddBet = ({ open, onClose }) => {
     }
   }
 
-  const previewBalance = betBalance + (tipo === 'ganho' ? 1 : -1) * (parseFloat(valor) || 0)
+  const previewBalance = betBalance + (tipo === 'ganho' ? 1 : -1) * (parseFloat(valor.replace(',', '.')) || 0)
 
   return (
     <Modal open={open} onClose={handleClose} title="Registrar aposta">
@@ -60,11 +60,11 @@ const AddBet = ({ open, onClose }) => {
       <div className={styles.valueInput}>
         <span className={styles.currency}>R$</span>
         <input
-          type="number"
+          type="text"
+          inputMode="decimal"
           placeholder="0,00"
           value={valor}
-          onChange={e => setValor(e.target.value)}
-          inputMode="decimal"
+          onChange={e => setValor(e.target.value.replace(/[^0-9,]/g, ''))}
           autoFocus
         />
       </div>

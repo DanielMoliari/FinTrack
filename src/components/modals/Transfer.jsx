@@ -20,10 +20,10 @@ const Transfer = ({ open, onClose }) => {
   const handleConfirm = async () => {
     if (!de || !para) { setError('Selecione as carteiras'); return }
     if (de === para) { setError('Origem e destino não podem ser iguais'); return }
-    if (!valor || parseFloat(valor) <= 0) { setError('Informe um valor válido'); return }
+    if (!valor || parseFloat(valor.replace(',', '.')) <= 0) { setError('Informe um valor válido'); return }
     setSaving(true)
     try {
-      await transfer({ de, para, valor: parseFloat(valor) })
+      await transfer({ de, para, valor: parseFloat(valor.replace(',', '.')) })
       await loadAll()
       handleClose()
     } catch (e) {
@@ -50,11 +50,11 @@ const Transfer = ({ open, onClose }) => {
       <div className={styles.valueInput}>
         <span className={styles.currency}>R$</span>
         <input
-          type="number"
+          type="text"
+          inputMode="decimal"
           placeholder="0,00"
           value={valor}
-          onChange={e => setValor(e.target.value)}
-          inputMode="decimal"
+          onChange={e => setValor(e.target.value.replace(/[^0-9,]/g, ''))}
         />
       </div>
 

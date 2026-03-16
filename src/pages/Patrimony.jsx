@@ -41,11 +41,11 @@ const Patrimony = () => {
 
   const startEditWallet = (w) => {
     setEditingWallet(w.id)
-    setWalletVal(w.balance > 0 ? w.balance.toFixed(2) : '')
+    setWalletVal(w.balance > 0 ? w.balance.toFixed(2).replace('.', ',') : '')
   }
 
   const handleSaveWallet = async (walletId) => {
-    const val = parseFloat(walletVal)
+    const val = parseFloat(walletVal.replace(',', '.'))
     if (isNaN(val)) return
     setSavingWallet(true)
     try {
@@ -61,11 +61,11 @@ const Patrimony = () => {
 
   const startEditC6 = (field, currentVal) => {
     setC6editing(field)
-    setC6val(currentVal > 0 ? String(currentVal) : '')
+    setC6val(currentVal > 0 ? String(currentVal).replace('.', ',') : '')
   }
 
   const handleSaveC6 = async (field) => {
-    const val = parseFloat(c6val)
+    const val = parseFloat(c6val.replace(',', '.'))
     if (isNaN(val) || val < 0) return
     setSavingC6(true)
     setC6editing(null)
@@ -118,10 +118,10 @@ const Patrimony = () => {
           {isEditing ? (
             <>
               <input
-                type="number"
+                type="text"
                 inputMode="decimal"
                 value={c6val}
-                onChange={e => setC6val(e.target.value)}
+                onChange={e => setC6val(e.target.value.replace(/[^0-9,]/g, ''))}
                 onKeyDown={e => { if (e.key === 'Enter') handleSaveC6(field) }}
                 style={{ width: 100, background: '#131320', border: '0.5px solid #1e1e30', borderRadius: 6, padding: '4px 8px', fontSize: 12, color: '#e0e0e8', textAlign: 'right' }}
                 autoFocus
@@ -192,10 +192,10 @@ const Patrimony = () => {
                   {editingWallet === w.id ? (
                     <div style={{ display: 'flex', gap: 4, alignItems: 'center' }}>
                       <input
-                        type="number"
+                        type="text"
                         inputMode="decimal"
                         value={walletVal}
-                        onChange={e => setWalletVal(e.target.value)}
+                        onChange={e => setWalletVal(e.target.value.replace(/[^0-9,]/g, ''))}
                         onKeyDown={e => e.key === 'Enter' && handleSaveWallet(w.id)}
                         style={{ width: 100, background: '#131320', border: '0.5px solid #1e1e30', borderRadius: 6, padding: '4px 8px', fontSize: 12, color: '#e0e0e8', textAlign: 'right' }}
                         autoFocus

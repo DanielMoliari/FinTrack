@@ -73,7 +73,7 @@ const AddCrypto = ({ open, onClose }) => {
         if (cancelled) return
         const p = prices[selected.id]?.brl ?? null
         setLivePrice(p)
-        if (p) setPreco(p.toFixed(2))
+        if (p) setPreco(p.toFixed(2).replace('.', ','))
       })
       .catch(() => { if (!cancelled) setLivePrice(null) })
       .finally(() => { if (!cancelled) setLoadingPrice(false) })
@@ -104,16 +104,16 @@ const AddCrypto = ({ open, onClose }) => {
 
   const handleSave = async () => {
     if (!selected?.id)                          { setError('Selecione uma crypto'); return }
-    if (!quantidade || parseFloat(quantidade) <= 0) { setError('Informe a quantidade'); return }
-    if (!preco       || parseFloat(preco) <= 0)     { setError('Informe o preço de entrada'); return }
+    if (!quantidade || parseFloat(quantidade.replace(',', '.')) <= 0) { setError('Informe a quantidade'); return }
+    if (!preco       || parseFloat(preco.replace(',', '.')) <= 0)    { setError('Informe o preço de entrada'); return }
     setSaving(true)
     try {
       await addCrypto({
         id:            generateId('crypto'),
         simbolo:       selected.id,
         nome:          selected.name,
-        quantidade:    parseFloat(quantidade),
-        preco_entrada: parseFloat(preco),
+        quantidade:    parseFloat(quantidade.replace(',', '.')),
+        preco_entrada: parseFloat(preco.replace(',', '.')),
         data_compra:   toApiDate(dataCompra),
         ativo:         true,
       })
@@ -133,10 +133,10 @@ const AddCrypto = ({ open, onClose }) => {
   )
 
   const totalInvestido = quantidade && preco
-    ? parseFloat(quantidade) * parseFloat(preco) : null
+    ? parseFloat(quantidade.replace(',', '.')) * parseFloat(preco.replace(',', '.')) : null
 
   const lucro = livePrice && quantidade && preco
-    ? (livePrice - parseFloat(preco)) * parseFloat(quantidade) : null
+    ? (livePrice - parseFloat(preco.replace(',', '.'))) * parseFloat(quantidade.replace(',', '.')) : null
 
   return (
     <Modal open={open} onClose={handleClose} title="Adicionar crypto">
@@ -246,12 +246,11 @@ const AddCrypto = ({ open, onClose }) => {
           <input
             className={styles.input}
             style={{ marginBottom: 0 }}
-            type="number"
+            type="text"
             inputMode="decimal"
-            placeholder="0.00000001"
-            step="0.00000001"
+            placeholder="0,00000001"
             value={quantidade}
-            onChange={e => setQuantidade(e.target.value)}
+            onChange={e => setQuantidade(e.target.value.replace(/[^0-9,]/g, ''))}
           />
         </div>
         <div style={{ flex: 1 }}>
@@ -259,11 +258,11 @@ const AddCrypto = ({ open, onClose }) => {
           <input
             className={styles.input}
             style={{ marginBottom: 0 }}
-            type="number"
+            type="text"
             inputMode="decimal"
             placeholder="0,00"
             value={preco}
-            onChange={e => setPreco(e.target.value)}
+            onChange={e => setPreco(e.target.value.replace(/[^0-9,]/g, ''))}
           />
         </div>
       </div>

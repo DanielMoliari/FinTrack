@@ -31,14 +31,14 @@ const AddFixed = ({ open, onClose }) => {
 
   const handleSave = async () => {
     if (!nome.trim())                          { setError('Informe o nome'); return }
-    if (!valor || parseFloat(valor) <= 0)      { setError('Informe um valor válido'); return }
+    if (!valor || parseFloat(valor.replace(',', '.')) <= 0) { setError('Informe um valor válido'); return }
     if (!categoria)                            { setError('Selecione uma categoria'); return }
     setSaving(true)
     try {
       await addFixed({
         id:                generateId('fix'),
         nome:              nome.trim(),
-        valor:             parseFloat(valor),
+        valor:             parseFloat(valor.replace(',', '.')),
         categoria,
         subcategoria:      subcateg,
         dia_vencimento:    parseInt(diaVenc),
@@ -72,11 +72,11 @@ const AddFixed = ({ open, onClose }) => {
       <div className={styles.valueInput} style={{ marginBottom: 16 }}>
         <span className={styles.currency}>R$</span>
         <input
-          type="number"
+          type="text"
+          inputMode="decimal"
           placeholder="0,00"
           value={valor}
-          onChange={e => setValor(e.target.value)}
-          inputMode="decimal"
+          onChange={e => setValor(e.target.value.replace(/[^0-9,]/g, ''))}
         />
       </div>
 
