@@ -10,6 +10,9 @@ export default defineConfig(({ mode }) => {
   const coingeckoUrl = env.VITE_COINGECKO_URL || "https://api.coingecko.com";
 
   return {
+    build: {
+      chunkSizeWarningLimit: 600,
+    },
     plugins: [
       react(),
       VitePWA({

@@ -1,7 +1,6 @@
 import { useState, useMemo } from 'react'
 import Modal from '../ui/Modal'
 import useFinanceStore from '../../store/useFinanceStore'
-import { generatePDF } from '../../utils/generatePDF'
 import styles from './Modal.module.scss'
 
 const today = new Date()
@@ -50,6 +49,8 @@ const ExportPDF = ({ open, onClose }) => {
     setError('')
     setLoading(true)
     try {
+      // Dynamic import — jsPDF (~1 MB) só carrega quando o usuário gera o PDF
+      const { generatePDF } = await import('../../utils/generatePDF')
       await generatePDF({
         transactions,
         rendimentos,
