@@ -302,15 +302,17 @@ const AddCrypto = ({ open, onClose }) => {
 
       {error && <p className={styles.error}>{error}</p>}
 
-      <button
-        className={styles.saveBtn}
-        onClick={handleSave}
-        disabled={saving || !selected}
-        type="button"
-        style={{ background: '#378add' }}
-      >
-        {saving ? 'Salvando…' : 'Adicionar crypto'}
-      </button>
+      <div className={styles.saveBtnWrap}>
+        <button
+          className={styles.saveBtn}
+          onClick={handleSave}
+          disabled={saving || !selected}
+          type="button"
+          style={{ background: '#378add' }}
+        >
+          {saving ? 'Salvando…' : 'Adicionar crypto'}
+        </button>
+      </div>
     </Modal>
   )
 }

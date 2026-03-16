@@ -141,16 +141,18 @@ const ExportPDF = ({ open, onClose }) => {
 
       {error && <p className={styles.error}>{error}</p>}
 
-      <button
-        className={styles.saveBtn}
-        onClick={handleGenerate}
-        disabled={loading || !hasData}
-        type="button"
-      >
-        {loading
-          ? (lang === 'pt' ? 'Gerando…' : 'Generating…')
-          : (lang === 'pt' ? 'Gerar PDF' : 'Generate PDF')}
-      </button>
+      <div className={styles.saveBtnWrap}>
+        <button
+          className={styles.saveBtn}
+          onClick={handleGenerate}
+          disabled={loading || !hasData}
+          type="button"
+        >
+          {loading
+            ? (lang === 'pt' ? 'Gerando…' : 'Generating…')
+            : (lang === 'pt' ? 'Gerar PDF' : 'Generate PDF')}
+        </button>
+      </div>
 
     </Modal>
   )

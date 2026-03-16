@@ -133,14 +133,16 @@ const AddFixed = ({ open, onClose }) => {
 
       {error && <p className={styles.error}>{error}</p>}
 
-      <button
-        className={styles.saveBtn}
-        onClick={handleSave}
-        disabled={saving}
-        type="button"
-      >
-        {saving ? 'Salvando…' : 'Adicionar fixo'}
-      </button>
+      <div className={styles.saveBtnWrap}>
+        <button
+          className={styles.saveBtn}
+          onClick={handleSave}
+          disabled={saving}
+          type="button"
+        >
+          {saving ? 'Salvando…' : 'Adicionar fixo'}
+        </button>
+      </div>
     </Modal>
   )
 }

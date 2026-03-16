@@ -4,17 +4,20 @@
 
 .header {
   padding: 24px 16px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
 }
 
 .greeting {
-  font-size: 13px;
-  color: var(--color-text-secondary);
+  font-size: 14px;
+  color: #888890;
 }
 
 .name {
-  font-size: 20px;
-  font-weight: 600;
-  color: var(--color-text-primary);
+  font-size: 22px;
+  font-weight: 500;
+  color: #e0e0e8;
   letter-spacing: -0.5px;
 }
 

@@ -60,9 +60,11 @@ const Transfer = ({ open, onClose }) => {
 
       {error && <p className={styles.error}>{error}</p>}
 
-      <button className={styles.saveBtn} onClick={handleConfirm} disabled={saving} type="button">
-        {saving ? 'Transferindo...' : 'Confirmar'}
-      </button>
+      <div className={styles.saveBtnWrap}>
+        <button className={styles.saveBtn} onClick={handleConfirm} disabled={saving} type="button">
+          {saving ? 'Transferindo...' : 'Confirmar'}
+        </button>
+      </div>
     </Modal>
   )
 }

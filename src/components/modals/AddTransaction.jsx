@@ -205,14 +205,16 @@ const AddTransaction = ({ open, onClose }) => {
 
       {error && <p className={styles.error}>{error}</p>}
 
-      <button
-        className={styles.saveBtn}
-        onClick={handleSave}
-        disabled={saving}
-        type="button"
-      >
-        {saving ? "Salvando..." : "Salvar"}
-      </button>
+      <div className={styles.saveBtnWrap}>
+        <button
+          className={styles.saveBtn}
+          onClick={handleSave}
+          disabled={saving}
+          type="button"
+        >
+          {saving ? "Salvando..." : "Salvar"}
+        </button>
+      </div>
     </Modal>
   );
 };
